@@ -22,6 +22,7 @@ export class WorksheetService {
   constructor(private db: AngularFireDatabase) {
     this.options = new WorksheetOptions();
     this.problems = new Array<MathProblem>();
+    
   }
 
   addProblem(problem: MathProblem) {

@@ -176,7 +176,7 @@
       </md-card>
     </form>
   </div>
-  <div class="worksheet-content">
+  <div class="worksheet-content" id="worksheet-content">
     <md-card class="worksheet__card" [class.worksheet__card--landscape]="worksheetService.options.landscape" *ngIf="worksheetService.problems.length">
       <md-card-content>
         <h2 class="worksheet__name-date clearfix" *ngIf="worksheetService.options.showNameLine || worksheetService.options.showDateLine">
@@ -214,6 +214,7 @@
       <md-icon class="md-24" aria-label="Print the worksheet" (click)="print()">print</md-icon>
     </button>
     <button class="worksheet__save-button d-print-none" md-fab color="primary" *ngIf="worksheetService.problems.length && (authService.user | async)?.uid">
+      <!-- <md-icon class="md-24" aria-label="Save the worksheet" (click)="downloadPdf()">save</md-icon> -->
       <md-icon class="md-24" aria-label="Save the worksheet" (click)="save()">save</md-icon>
     </button>
   </div>

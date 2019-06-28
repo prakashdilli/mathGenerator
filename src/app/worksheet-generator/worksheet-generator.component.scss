@@ -135,14 +135,17 @@ $sidebar-width: 300px;
 }
 
 .worksheet__card {
-  height: 660pt; // emulate 8.5x11 paper height
+  height: auto; // emulate 8.5x11 paper height
+  // height: 660pt; // emulate 8.5x11 paper height
   margin: 75px auto 1rem;
   padding: 2rem;
+  padding-top: 120px;
   width: 511pt; // emulate 8.5x11 paper width
 }
 
 .worksheet__card--landscape {
-  height: 511pt; // emulate landscape 8.5x11 paper height
+  // height: 511pt; // emulate landscape 8.5x11 paper height
+  height: auto;
   width: 660pt; // emulate landscape 8.5x11 paper width
 }
 
@@ -314,6 +317,7 @@ $sidebar-width: 300px;
     margin: 0;
     min-height: 100%; // make sure the card fills the full space, so we can position the worksheet id at the bottom
     padding: 0;
+    padding-top: 120px;
     width: 100%;
   }
 }

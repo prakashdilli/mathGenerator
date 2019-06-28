@@ -7,6 +7,9 @@ import { MathProblem } from '../worksheet/math-problem';
 import { WorksheetService } from '../worksheet/worksheet.service';
 import { ProblemType } from '../worksheet/problem-type.enum';
 
+import * as jsPDF from 'jspdf'
+// import html2canvas from 'html2canvas'; 
+
 declare let window: any;
 
 @Component({
@@ -189,4 +192,11 @@ export class WorksheetGeneratorComponent implements OnInit {
     this.mathProblemsClasses[`math-problems--letter-spacing-${this.letterSpacing}`] = true;
     this.mathProblemsClasses[`math-problems--line-spacing-${this.lineSpacing}`] = true;
   }
+
+  downloadPdf() {
+    let doc = new jsPDF();
+    doc.addHTML(document.getElementById("worksheet-content"), function() {
+       doc.save("obrz.pdf");
+    });
+}
 }
