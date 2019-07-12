@@ -86,6 +86,7 @@ export class WorksheetService {
           break;
       }
     }
+    return this.problems;
   }
 
   getById(id: string): FirebaseObjectObservable<WorksheetService> {

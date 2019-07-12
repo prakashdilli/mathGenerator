@@ -41,6 +41,12 @@ $sidebar-width: 300px;
   height: 100%;
   overflow-y: auto;
   position: relative;
+  .math-problem{
+    display: block!important;
+    // display: flex !important;
+    width: 100%;
+    // justify-content: space-around;
+  }
 }
 
 .worksheet-display-disclaimer {
@@ -309,15 +315,31 @@ $sidebar-width: 300px;
     background-color: transparent;
     height: auto;
     overflow-y: visible;
+   
+
   }
 
   .worksheet__card,
   .worksheet__card--landscape {
+    box-shadow: none!important;
     height: auto;
     margin: 0;
     min-height: 100%; // make sure the card fills the full space, so we can position the worksheet id at the bottom
     padding: 0;
     padding-top: 120px;
     width: 100%;
+    
   }
+}
+
+.math-problem-container{
+  width:20%;
+  float:left;
+}
+
+table{
+  width: 100%;
+}
+table tr td, table tr th {
+  page-break-inside: avoid;
 }

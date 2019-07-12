@@ -29,6 +29,8 @@ export class WorksheetGeneratorComponent implements OnInit {
   problemsPerRow: number;
   worksheetService: WorksheetService;
 
+  newlyGenratedPrblm = [];
+
   private isLoggedIn = false;
 
   constructor(
@@ -38,6 +40,7 @@ export class WorksheetGeneratorComponent implements OnInit {
     public authService: AuthService
   ) {
     this.worksheetService = worksheetService;
+    console.log('**',this.worksheetService)
   }
 
   ngOnInit() {
@@ -71,7 +74,31 @@ export class WorksheetGeneratorComponent implements OnInit {
 
     this.worksheetService.clearProblems();
 
-    this.worksheetService.generateProblems();
+   let problems =  this.worksheetService.generateProblems();
+   this.newlyGenratedPrblm[0]=[];
+    console.log('problems',problems,this.problemsPerRow);
+    let prblmIndex = 0;
+      let temp = []
+      let j=0;
+   for(let i=0; i<problems.length; i++){
+     if(i%this.problemsPerRow != 0 || i==0 ){
+       console.log('*',i,i%this.problemsPerRow)
+       problems[i]['index']=++prblmIndex
+      temp.push(problems[i]);
+      if( problems.length-1 == i){
+        this.newlyGenratedPrblm[0][j]= temp;
+      }
+     }
+     if(i%this.problemsPerRow == 0 && i!=0 ){
+      console.log('**',i,i%this.problemsPerRow)
+      this.newlyGenratedPrblm[0][j]= temp;
+      j++
+      temp = [];
+      problems[i]['index']=++prblmIndex
+      temp.push(problems[i])
+     }
+   }
+   console.log(this.newlyGenratedPrblm)
 
     if (!this.isLoggedIn) {
       this.authService.loginAnonymous();

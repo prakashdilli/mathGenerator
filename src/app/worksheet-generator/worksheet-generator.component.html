@@ -185,22 +185,65 @@
         </h2>
         <h1 class="worksheet__title" *ngIf="worksheetService.options.showTitle">{{worksheetService.options.title}}</h1>
         <h3 class="worksheet__instructions" *ngIf="worksheetService.options.showInstructions">{{worksheetService.options.instructions}}</h3>
-        <div class="math-problems" [ngClass]="mathProblemsClasses">
-          <div class="math-problem" *ngFor="let problem of worksheetService.problems; index as i">
-            <div class="math-problem__problem">
-              <div class="math-problem__number" *ngIf="worksheetService.options.showProblemNumbers">{{i+1}}.</div>
-              <div class="math-problem__symbol">{{ problem.symbol }}</div>
-              <div class="math-problem__value" *ngFor="let value of problem.values">{{ value }}</div>
-              <div class="math-problem__answer" *ngIf="worksheetService.options.showAnswers">
-                <ng-container *ngIf="isDivisionProblem(problem)">
-                  <ng-container *ngIf="worksheetService.options.divisionOptions.showRemainders">{{problem.answerFloored}}<strong>r</strong>{{problem.remainder}}</ng-container>
-                  <ng-container *ngIf="!worksheetService.options.divisionOptions.showRemainders">{{problem.answer | number:getDivisionNumberFormat()}}</ng-container>
-                </ng-container>
-                <ng-container *ngIf="!isDivisionProblem(problem)">{{ problem.answer }}</ng-container>
-              </div>
-              <div class="math-problem__answer" *ngIf="!worksheetService.options.showAnswers">&nbsp;</div>
-            </div>
-          </div>
+        <div class="math-problems">
+        <!-- <div class="math-problems" [ngClass]="mathProblemsClasses"> -->
+          <!-- <div class="math-problem" *ngFor="let problem of worksheetService.problems; index as i"> -->
+            <table>
+              <tbody>
+                <tr  *ngFor="let problemWrapper of newlyGenratedPrblm[0]; index as j">
+                  <td *ngFor="let problem of problemWrapper; index as i">
+                      <!-- <div class="math-problem" > -->
+                          <!-- <ng-container *ngFor="let problem of problemWrapper; index as i"> -->
+                              <!-- <div class="math-problem-container"> -->
+                      
+                                  <div class="math-problem__problem">
+                                    <div class="math-problem__number" *ngIf="worksheetService.options.showProblemNumbers">{{problem['index']}}.</div>
+                                    <div class="math-problem__symbol">{{ problem.symbol }}</div>
+                                    <div class="math-problem__value" *ngFor="let value of problem.values">{{ value }}</div>
+                                    <div class="math-problem__answer" *ngIf="worksheetService.options.showAnswers">
+                                      <ng-container *ngIf="isDivisionProblem(problem)">
+                                        <ng-container *ngIf="worksheetService.options.divisionOptions.showRemainders">{{problem.answerFloored}}<strong>r</strong>{{problem.remainder}}</ng-container>
+                                        <ng-container *ngIf="!worksheetService.options.divisionOptions.showRemainders">{{problem.answer | number:getDivisionNumberFormat()}}</ng-container>
+                                      </ng-container>
+                                      <ng-container *ngIf="!isDivisionProblem(problem)">{{ problem.answer }}</ng-container>
+                                    </div>
+                                    <div class="math-problem__answer" *ngIf="!worksheetService.options.showAnswers">&nbsp;</div>
+                                  </div>
+                      
+                                <!-- </div> -->
+                          <!-- </ng-container> -->
+                    
+                        <!-- </div> -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          <!--   <ng-container *ngFor="let problemWrapper of newlyGenratedPrblm[0]; index as j">
+                <div class="math-problem" >
+                    <ng-container *ngFor="let problem of problemWrapper; index as i">
+                        <div class="math-problem-container">
+                
+                            <div class="math-problem__problem">
+                              <div class="math-problem__number" *ngIf="worksheetService.options.showProblemNumbers">{{i+j+1}}.</div>
+                              <div class="math-problem__symbol">{{ problem.symbol }}</div>
+                              <div class="math-problem__value" *ngFor="let value of problem.values">{{ value }}</div>
+                              <div class="math-problem__answer" *ngIf="worksheetService.options.showAnswers">
+                                <ng-container *ngIf="isDivisionProblem(problem)">
+                                  <ng-container *ngIf="worksheetService.options.divisionOptions.showRemainders">{{problem.answerFloored}}<strong>r</strong>{{problem.remainder}}</ng-container>
+                                  <ng-container *ngIf="!worksheetService.options.divisionOptions.showRemainders">{{problem.answer | number:getDivisionNumberFormat()}}</ng-container>
+                                </ng-container>
+                                <ng-container *ngIf="!isDivisionProblem(problem)">{{ problem.answer }}</ng-container>
+                              </div>
+                              <div class="math-problem__answer" *ngIf="!worksheetService.options.showAnswers">&nbsp;</div>
+                            </div>
+                
+                          </div>
+                    </ng-container>
+              
+                  </div>
+            </ng-container> -->
+         
+          <!-- </div> -->
         </div>
         <div class="worksheet__id" *ngIf="worksheetService.id">Worksheet Id: {{worksheetService.id}}</div>
       </md-card-content>
@@ -213,10 +256,9 @@
     <button class="worksheet__print-button d-print-none" md-fab color="accent" *ngIf="worksheetService.problems.length">
       <md-icon class="md-24" aria-label="Print the worksheet" (click)="print()">print</md-icon>
     </button>
-    <button class="worksheet__save-button d-print-none" md-fab color="primary" *ngIf="worksheetService.problems.length && (authService.user | async)?.uid">
-      <!-- <md-icon class="md-24" aria-label="Save the worksheet" (click)="downloadPdf()">save</md-icon> -->
+   <!--  <button class="worksheet__save-button d-print-none" md-fab color="primary" *ngIf="worksheetService.problems.length && (authService.user | async)?.uid">
       <md-icon class="md-24" aria-label="Save the worksheet" (click)="save()">save</md-icon>
-    </button>
+    </button> -->
   </div>
 </div>
 <div class="worksheet__generate mat-elevation-z5 d-print-none">

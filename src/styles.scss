@@ -26,3 +26,21 @@ app-worksheet-generator {
     background-color: transparent;
   }
 }
+@media print {
+  .math-problem{
+    // display: none!important;
+    // visibility: hidden;
+    // background: red!important;
+
+    display: table!important; 
+    page-break-before: auto!important;
+    page-break-inside: avoid!important;
+    // page-break-inside: avoid!important;
+    // display: block; page-break-before: auto;
+  }
+  .math-problem-container{
+    display: table!important; 
+    page-break-before: auto!important;
+    page-break-inside: avoid!important;
+  }
+}
