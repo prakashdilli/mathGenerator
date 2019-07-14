@@ -9,7 +9,7 @@ export class WorksheetOptions {
   instructions = 'Complete the following problems. Show all of your work.';
   landscape = false;
   letterSpacing = 3;
-  lineSpacing = 5;
+  lineSpacing = 1;
   multiplicationOptions = new MultiplicationOptions();
   problemCount = 25;
   problemFontSize = 2;

@@ -223,35 +223,89 @@ $sidebar-width: 300px;
 }
 
 .math-problem {
-  box-sizing: border-box;
-  margin-top: 1rem;
+  // box-sizing: border-box;
+  // margin-top: 1rem;
   text-align: center;
   transition: font-size 250ms ease, margin 250ms ease, width 250ms ease;
-  width: 20%;
+  // width: 20%;
 
-  @for $i from 1 through 10 {
-    .math-problems--columns-#{$i} & {
-      width: (100% / $i);
 
-      &:nth-child(-n+#{$i}) {
-        margin-top: 0;
+}
+table{
+  tbody{
+    tr{
+      td{
+       /*  1: .75rem,
+  2: 1rem,
+  3: 1.25rem,
+  4: 1.5rem,
+  5: 1.75rem,
+  6: 2rem */
+        .math-problems--font-size-1{
+          font-size: .75rem;
+        }
+        .math-problems--font-size-2{
+          font-size: .85rem;
+        }
+        .math-problems--font-size-3{
+          font-size: 1.05rem;
+        }
+        .math-problems--font-size-4{
+          font-size: 1.15rem;
+        }
+        .math-problems--font-size-5{
+          font-size: 1.25rem;
+        }
+        .math-problems--font-size-6{
+          font-size: 1.35rem;
+        }
+
+        
+  
+        @for $i from 1 through 10 {
+          .math-problems--columns-#{$i} & {
+            width: (100% / $i);
+      
+            &:nth-child(-n+#{$i}) {
+              margin-top: 0;
+            }
+          }
+        }
       }
-    }
-  }
-
-  @for $i from 1 through 6 {
-    .math-problems--font-size-#{$i} & {
-      font-size: map-get($font-sizes, $i);
-    }
-  }
-
-  @for $i from 1 through 10 {
-    .math-problems--line-spacing-#{$i} & {
-      margin-top: map-get($line-spacing, $i);
     }
   }
 }
 
+.math-problems--line-spacing-1{
+  margin-top: 14px;
+}
+.math-problems--line-spacing-2{
+  margin-top: 28px;
+}
+.math-problems--line-spacing-3{
+  margin-top: 42px;
+}
+.math-problems--line-spacing-4{
+  margin-top: 56px;
+}
+.math-problems--line-spacing-5{
+  margin-top: 70px;
+}
+.math-problems--line-spacing-6{
+  margin-top: 84px;
+}
+.math-problems--line-spacing-7{
+  margin-top: 98px;
+}
+.math-problems--line-spacing-8{
+  margin-top: 112px;
+}
+.math-problems--line-spacing-9{
+  margin-top: 126px;
+}
+.math-problems--line-spacing-10{
+  margin-top: 140px;
+}
 .math-problem__answer {
   border-top: 2px solid #000;
   color: #E91E63;
@@ -303,12 +357,35 @@ $sidebar-width: 300px;
 }
 
 @media print {
-  .math-problem {
-    @for $i from 1 through 10 {
-      .math-problems--line-spacing-#{$i} & {
-        margin-top: map-get($line-spacing, $i) * 1.5;
-      }
-    }
+  .math-problems--line-spacing-1{
+    margin-top: 14px;
+  }
+  .math-problems--line-spacing-2{
+    margin-top: 28px;
+  }
+  .math-problems--line-spacing-3{
+    margin-top: 42px;
+  }
+  .math-problems--line-spacing-4{
+    margin-top: 56px;
+  }
+  .math-problems--line-spacing-5{
+    margin-top: 70px;
+  }
+  .math-problems--line-spacing-6{
+    margin-top: 84px;
+  }
+  .math-problems--line-spacing-7{
+    margin-top: 98px;
+  }
+  .math-problems--line-spacing-8{
+    margin-top: 112px;
+  }
+  .math-problems--line-spacing-9{
+    margin-top: 126px;
+  }
+  .math-problems--line-spacing-10{
+    margin-top: 140px;
   }
 
   .worksheet-content {
@@ -342,4 +419,8 @@ table{
 }
 table tr td, table tr th {
   page-break-inside: avoid;
+  text-align: center;
+}
+table tr td, table tr th {
+  text-align: center;
 }
