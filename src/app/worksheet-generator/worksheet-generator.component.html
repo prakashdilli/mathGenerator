@@ -192,10 +192,6 @@
               <tbody >
                 <tr  *ngFor="let problemWrapper of newlyGenratedPrblm[0]; index as j">
                   <td *ngFor="let problem of problemWrapper; index as i">
-                      <!-- <div class="math-problem"  > -->
-                          <!-- <ng-container *ngFor="let problem of problemWrapper; index as i"> -->
-                              <!-- <div class="math-problem-container" > -->
-                      
                                   <div class="math-problem__problem" [ngClass]="mathProblemsClasses">
                                     <div class="math-problem__number" *ngIf="worksheetService.options.showProblemNumbers">{{problem['index']}}.</div>
                                     <div class="math-problem__symbol">{{ problem.symbol }}</div>
@@ -209,17 +205,34 @@
                                     </div>
                                     <div class="math-problem__answer" *ngIf="!worksheetService.options.showAnswers">&nbsp;</div>
                                   </div>
-                      
-                                <!-- </div> -->
-                          <!-- </ng-container> -->
-                    
-                        <!-- </div> -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>Answers</h4>
+            <table>
+              <tbody >
+                <tr  *ngFor="let problemWrapper of newlyGenratedPrblm[0]; index as j">
+                  <td *ngFor="let problem of problemWrapper; index as i">
+                                  <div class="math-problem__problem" [ngClass]="mathProblemsClasses">
+                                    <div class="math-problem__number">{{problem['index']}}.</div>
+                                    <!-- <div class="math-problem__symbol">{{ problem.symbol }}</div> -->
+                                    <!-- <div class="math-problem__value" *ngFor="let value of problem.values">{{ value }}</div> -->
+                                    <div>
+                                      <ng-container *ngIf="isDivisionProblem(problem)">
+                                        <ng-container *ngIf="worksheetService.options.divisionOptions.showRemainders">{{problem.answerFloored}}<strong>r</strong>{{problem.remainder}}</ng-container>
+                                        <ng-container *ngIf="!worksheetService.options.divisionOptions.showRemainders">{{problem.answer | number:getDivisionNumberFormat()}}</ng-container>
+                                      </ng-container>
+                                      <ng-container *ngIf="!isDivisionProblem(problem)">{{ problem.answer }}</ng-container>
+                                    </div>
+                                    <!-- <div class="math-problem__answer">&nbsp;</div> -->
+                                  </div>
                   </td>
                 </tr>
               </tbody>
             </table>
         </div>
-        <div class="worksheet__id" *ngIf="worksheetService.id">Worksheet Id: {{worksheetService.id}}</div>
       </md-card-content>
     </md-card>
     <div class="worksheet-display-disclaimer mat-elevation-z5 d-print-none" *ngIf="worksheetService.problems.length">
