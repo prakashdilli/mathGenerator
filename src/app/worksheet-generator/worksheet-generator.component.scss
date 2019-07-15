@@ -355,7 +355,26 @@ table{
   justify-content: flex-start;
   margin-top: 1rem;
 }
-
+#answers-sheet{
+  width: 100%;
+  .answer-title{
+    font-weight: bold;
+  }
+  .answer-wrapper{
+    display: flex;
+  }
+  .answer-number{
+    margin-right: 5px;
+    font-weight: bold;
+  }
+  h4{
+    text-align: center;
+    font-weight: 500;
+  }
+  .math-problem__problem{
+    margin-top: 14px
+  }
+}
 @media print {
   .math-problems--line-spacing-1{
     margin-top: 14px;
@@ -395,7 +414,14 @@ table{
    
 
   }
-
+#answers-sheet{
+  h4{
+  page-break-after: always!important;
+  }
+  .math-problem__problem{
+    margin-top: 14px
+  }
+}
   .worksheet__card,
   .worksheet__card--landscape {
     box-shadow: none!important;
@@ -419,8 +445,11 @@ table{
 }
 table tr td, table tr th {
   page-break-inside: avoid;
-  text-align: center;
 }
 table tr td, table tr th {
   text-align: center;
 }
+#answers-sheet table tr td, table tr th {
+  text-align: left;
+}
+
