@@ -102,12 +102,10 @@ export class WorksheetService {
 
     if (this.id) {
       worksheets.update(this.id, savePayload).then(result => {
-        console.log('Updated worksheet');
       });
     } else {
       worksheets.push(savePayload).then(result => {
         this.id = result.key;
-        console.log('Saved worksheet');
       });
     }
   }

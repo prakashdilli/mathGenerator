@@ -269,7 +269,8 @@
                 <tr class="answer-title"> <td>Answer</td> </tr>
                 <tr *ngFor="let problemWrapper of newlyGenratedPrblm[0]; index as j">
                   <td *ngFor="let problem of problemWrapper; index as i">
-                    <div class="answer-wrapper" [ngClass]="mathProblemsClasses">
+                    <div class="answer-wrapper">
+                    <!-- <div class="answer-wrapper" [ngClass]="mathProblemsClasses"> -->
                       <div class="answer-number">{{problem['index']}}.) </div>
                       <!-- <div class="math-problem__symbol">{{ problem.symbol }}</div> -->
                       <!-- <div class="math-problem__value" *ngFor="let value of problem.values">{{ value }}</div> -->
